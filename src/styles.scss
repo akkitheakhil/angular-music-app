@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons');
+
+:root {
+
+/* COLORS */
+--black: #000000;
+--black-secondary: #020617;
+--primary-color: #7bf7ff;
+--light-color: #fcfbfc;
+--accent-color: #353641;
+--grey-color: #4e4e50;
+
+--pink: #ff6584;
+
+/* GRADIENTS */
+--blackgradiant: linear-gradient(180deg, var(--black), var(--black-secondary) );
+}
+
+/* GLOBAL STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+}
+
+body {
+  min-width: 380px !important;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--light-color);
+  font-family: 'Fira Sans', sans-serif;
+}

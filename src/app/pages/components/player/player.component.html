@@ -1,0 +1,63 @@
+<div class="player-container" >
+  <h1>Now Playing</h1>
+
+  <div class="album-art">
+    <img [src]="getCoverImage()" />
+    <app-wave-loader class="wave" [canAnimate]="isPlaying"></app-wave-loader>
+  </div>
+
+  <div class="info">
+    <span class="title" [title]="title">{{ title }}</span>
+    <span class="artist" [title]="artist">{{ artist }}</span>
+    <span class="album" [title]="album">{{ album }}</span>
+
+    <span class="material-icons" (click)="handleVolumeView()"  (clickOutside)=" handleVolumeClose()"> volume_up </span>
+  </div>
+
+  <div class="volume-control" *ngIf="showVolume">
+    <input type="range" orient="vertical" min="0" max="100" [(ngModel)]="volume" (change)="handleVolumeLevels()"/>
+
+    <span class="level">{{volume}}</span>
+  </div>
+
+  <div
+    class="progress-bar"
+    (click)="onProgressChange(progressbar, $event)"
+    #progressbar
+  >
+    <div class="progress" [style.width]="progressWidth + '%'"></div>
+  </div>
+  <div class="audio-time-info">
+    <span class="current">{{ audioTimes?.currentTime }}</span>
+    <span class="end">{{ audioTimes?.endTime }}</span>
+  </div>
+
+  <div class="controls">
+    <span class="material-icons" (click)="handleLoopMode()">
+      {{ loopMode }}
+    </span>
+    <span class="material-icons" (click)="handlePrev()"> skip_previous </span>
+    <span class="material-icons play" (click)="handlePlayPause()">
+      {{ isPlaying ? "pause" : "play_arrow" }}
+    </span>
+    <span class="material-icons" (click)="handleNext()"> skip_next </span>
+    <span class="material-icons" (click)="handleLibraryView()">
+      library_add
+    </span>
+  </div>
+</div>
+
+<div class="library" [@openClose]="isLibraryView ? 'open' : 'closed'">
+  <app-library
+    [libraryAudioFiles]="audioFiles"
+    (back)="handleLibraryView()"
+    (audioFiles)="handleAudioFiles($event)"
+    (playAudio)="handleAudioPlay($event)"
+  ></app-library>
+</div>
+
+<audio
+  #audio
+  (timeupdate)="timeUpdate($event)"
+  (ended)="onAudioEnded($event)"
+></audio>

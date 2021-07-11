@@ -1,0 +1,121 @@
+:host {
+  width: 100%;
+  height: 100%;
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
+.library-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  .header {
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    span {
+      position: absolute;
+      left: 0;
+      font-size: 2em;
+      cursor: pointer;
+
+      &:active {
+        color: var(--primary-color);
+      }
+    }
+
+    h1 {
+      text-align: center;
+    }
+  }
+
+  .add-btn {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    span {
+      transform: scale(2);
+      font-weight: bold;
+      color: var(--black-secondary);
+    }
+  }
+
+  .audio-list {
+    overflow-y: scroll !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    ::-webkit-scrollbar {
+      display: none !important;
+    }
+
+    padding: 10px;
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      margin: 10px;
+      cursor: pointer;
+
+      .title {
+        font-size: 1.6em;
+      }
+
+      .artist {
+        font-size: 1.2em;
+        color: var(--primary-color);
+      }
+
+      border-bottom: 2px solid var(--grey-color);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .empty-lib {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px 0;
+    svg {
+      width: 60%;
+      height: 50%;
+    }
+
+    div {
+
+      h3 {
+        font-size: 1.3em;
+        span {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+
+}
+
+.hidden {
+  visibility: hidden;
+}
